@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
+    <title>product</title>
+    
+    
+
+</head>
+<body>
+    <h1 style="margin: 50px;text-align: center;color: brown;">Product </h1>
+    <div class='row' id="display"></div>
+ 
+    </div>
+    <script>
+        fetch('https://fakestoreapi.in/api/products').then((data)=>{
+            return data.json()
+        }).then((data)=>{
+           console.log(data.products)
+            display(data.products)
+        })
+        const display =(data)=>{
+            let product =data.map((val,inde)=>{
+                return `<div class="col-4">
+    <div class="card">
+        <div style="display: grid;
+      place-items: center;"><img class="card-img-top" src="${val.image}" alt="Card image" style='width:200px;height:200px;al'/></div>
+        <div class="card-body">
+            
+            
+            <h3  style='text-align: center;' >Rs. ${val.price}</h3>
+            <h4 class="card-title">${val.title}</h4>
+            <h6>   </h6>
+            <p class="card-text">${val.description}</p>
+        </div>
+    </div>
+   </div>`
+            })
+            document.getElementById('display').innerHTML=product.join('')
+        }
+        
+    </script>
+</body>
+</html>
