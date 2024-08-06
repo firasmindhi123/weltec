@@ -10,12 +10,19 @@
 <body>
   <header id="main-header" class="bg-success text-white p-4 mb-3">
     <div class="container">
-      <div class="row ">
-        <div class="col-md-6">
+        <div class="row">
+           <div style="padding-left: 10px;"> 
           <h1 id="header-title"> contact detail</h1>
+          </div>
+          <div style="padding-left:600px ;padding-top: 10px;">
+          <form>
+            <input type="text" id="searchInput">
+            <button type="button" onclick="search12()">search</button>
+          </form>
+        </div>
         </div>
         
-      </div>
+    
     </div>
   </header>
   
@@ -34,10 +41,9 @@
            
             <label for ="phone">email</label>
             <input type="email" class="form-control mr-2" id="email" name="description">
-    
-        
-       
+
         <button type="button" class="btn-block" style="margin-top: 10px;margin-bottom:20px" onclick="aq()">add detail</button>
+        <h6 id="message" style="color: red;"></h6>
    
       </form>
       

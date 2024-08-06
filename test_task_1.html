@@ -19,11 +19,14 @@
         fetch('https://fakestoreapi.in/api/products').then((data)=>{
             return data.json()
         }).then((data)=>{
-           console.log(data.products)
-            display(data.products)
+             let c =JSON.stringify(data)
+             localStorage.setItem('data',c)
+            display()
         })
-        const display =(data)=>{
-            let product =data.map((val,inde)=>{
+        const display =()=>{
+            let data=localStorage.getItem('data')
+           let p =JSON.parse(data)
+            let product =p.products.map((val,inde)=>{
                 return `<div class="col-4">
     <div class="card">
         <div style="display: grid;
