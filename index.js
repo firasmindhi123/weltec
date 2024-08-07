@@ -1,6 +1,9 @@
-      
+       
    let index=-1
-    const data=[]
+    const data=JSON.parse(localStorage.getItem('data'))
+    
+    console.log(data)
+      
   function  aq(){
     let name=document.getElementById('name').value
     let email=document.getElementById('email').value
@@ -17,16 +20,18 @@
     const obj={
        name: name,
        email: email,
-    phone:phone
+       phone:phone
 
 
     }
     if(index<0)
         {
-            data.push(obj)  
+            data.push(obj) 
+            localStorage.setItem('data',JSON.stringify(data)) 
         }
    else{
         data[index]=obj
+        localStorage.setItem('data',JSON.stringify(data))
    }
    document.getElementById('name').value=''
    document.getElementById('email').value=''
@@ -55,7 +60,8 @@
    }
   function remove(id){
    data.splice(id,1)
-   display(data)    
+    localStorage.setItem('data',JSON.stringify(data))
+      display(data) 
 
   }
 function search12()
@@ -73,3 +79,4 @@ function search12()
     display(data)
   }  
 }
+display(data)

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+        <form onsubmit="submitInfo(event)">
+
+                <input type="text"  name="Name"  onblur="managevalidation(event)"/>
+                <span id="error-Name"></span>
+                <input type="email"  name="email" onblur="managevalidation(event)"/>
+                <span id="error-email"></span>
+                <input type="password" name="password" onblur="managevalidation(event)"/>
+                <span id="error-password"></span>
+                <input type="submit" value="save" />
+
+        </form>
+    <script>
+
+        const managevalidation = (e)=>{
+
+            
+              const emailExpression=/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
+              const nameExpression  = /^[A-Za-z]+$/
+              const passwordExpression=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[a-zA-Z\d@$!%*?&]{8,10}$/   
+              const {name,value} =e.target;
+            switch(name)
+            {
+                case "Name":
+                    if(!value)
+                    {
+                        document.getElementById("error-Name").innerHTML = "please enter name"
+                    }
+                    else if(!value.match(nameExpression)) 
+                    {
+                        document.getElementById("error-Name").innerHTML = "please enter correct email";
+                    }
+                    else
+                    {
+                        document.getElementById("error-Name").innerHTML=''
+                    }
+                     break;
+                case "email":
+
+                   if(!value)
+                   {
+                        document.getElementById("error-email").innerHTML = "please enter email";
+                   }
+                   else if(!value.match(emailExpression))
+                   {
+                       document.getElementById("error-email").innerHTML = "invalid password";
+                   }
+                   else
+                   {
+                        document.getElementById("error-email").innerHTML=''
+                   }
+
+                     break; 
+                     case "password":
+
+                   if(!value)
+                   {
+                        document.getElementById("error-password").innerHTML = "please enter password";
+                   }
+                   else if(!value.match(passwordExpression))
+                   {
+                       document.getElementById("error-password").innerHTML = "invalid password";
+                   }
+                   else
+                   {
+                        document.getElementById("error-password").innerHTML=''
+                   }
+
+                     break; 
+                     default:
+                       
+                      break;
+
+
+
+            }
+
+        }
+
+        const submitInfo = (event)=>{
+
+            event.preventDefault();
+
+            const data = new FormData(event.target);
+
+// Do a bit of work to convert the entries to a plain JS object
+         const value = Object.fromEntries(data.entries());
+
+          console.log({ value });
+
+        }
+
+    </script>
+</body>
+</html>
+ 

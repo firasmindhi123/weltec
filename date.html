@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">WebSiteName</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Page 1</a></li>
+            <li><a href="#">Page 2</a></li>
+            <li><a href="#">Page 3</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div>
+       <h1 id ='h'>
+
+       </h1>
+      </div>
+    <script>
+    function calcTime(offset) {
+    // create Date object for current location
+      
+    var d = new Date();
+    console.log(d.getMinutes()+offset)
+    let p = new Date(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate(),d.getUTCHours(),d.getUTCMinutes()+offset,d.getUTCSeconds());
+
+    console.log(new Date(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate(),d.getUTCHours(),d.getUTCMinutes()+offset,d.getUTCSeconds()))
+     //console.log(new Date(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCHours()+offset))
+    // convert to msec
+    // subtract local time zone offset
+    // get UTC time in msec
+    var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+
+    // create new Date object for different city
+    // using supplied offset
+    var nd = new Date(utc + (3600000*offset));
+
+    // return time as a string
+    // return "The local time for city"+ city +" is "+ nd.toLocaleString();
+}
+  console.log(calcTime(-240))
+    </script>
+</body>
+</html>
+
