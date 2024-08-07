@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+       
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form  onsubmit="submita(event)">
+    <input type="text" name="pin" id="pin" onkeypress="keypress(event)"/>
+    <span id="error" style="color: red;"></span>
+    <br>
+    <input type="submit" value="save" >
+   </form>
+    <script>
+        const submita =(e)=>{
+            
+            e.preventDefault()
+            let regularExpression  = /^[0-9]{6}$/
+             if(!regularExpression.test(e.target.pin.value))
+             {
+                document.getElementById('error').innerHTML='incomplte pin'
+                document.getElementById('pin').focus()
+             }
+             else{
+                alert (e.target.pin.value)
+                document.getElementById('error').innerHTML=''
+                return e.target.pin.value=' ' 
+             }
+           
+        }
+        const keypress=(e)=>{
+            console.log(e.target.name)
+            if((e.key <='9' && e.key>='0') && e.target.value.length<6)
+        {
+            e.returnValue =true
+        }
+        else{
+            e.returnValue =false
+        }
+        }
+
+    </script>
+</body>
+</html>
