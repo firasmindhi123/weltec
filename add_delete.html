@@ -51,19 +51,14 @@
     function  teAs(xc)
     {
         
-        let a=document.querySelectorAll('input[type=checkbox]')
-
+      let a=document.querySelectorAll('input[type=checkbox]:checked').length>0 ?document.querySelectorAll('input[type=checkbox]:checked'):document.querySelectorAll('input[type=checkbox]')
        a.forEach((val)=>{
-         if(val.checked)
-         {
-            check(val)
-         }
+      check(val)   
        })
     }
     function check(val)
     {
-       if(val.checked)
-       {
+       
         let add=document.getElementById('az').value
         
        let valueElement=val.parentElement.nextElementSibling.children[0]
@@ -82,7 +77,7 @@
          valueElement.value=c
        }
        }
-    }
+    
     function add(val)
     {
    let a=  document.getElementById(val).children[1].children[0]
