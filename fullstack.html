@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="checkbox" onchange="handleTree(this)"/>full stack
+   <ul id="full">
+        <li id="fronted"><input type="checkbox" onchange="fullStack(this)"/>front end
+           <ul>
+            <li><input type="checkbox" onchange="front_back(this,'fronted')"/>react js</li>
+            <li> <input type="checkbox" onchange="front_back(this,'fronted')"/>html</li>
+            <li> <input type="checkbox" onchange="front_back(this,'fronted')"/>css</li> 
+           </ul>  
+        </li>
+        <li id="backend"><input type="checkbox" onchange="fullStack(this)"/>backend
+          <ul>
+            <li><input type="checkbox" onchange="front_back(this,'backend')"/>node js</li>
+            <li> <input type="checkbox" onchange="front_back(this,'backend')"/>express js</li>
+            <li> <input type='checkbox' onchange="front_back(this,'backend')">mysql</li>
+            <li><input type='checkbox' onchange="front_back(this,'backend')">mongo db </li> </li> 
+          </ul>  
+        </li>
+    </ul> 
+       <script>
+        function front_back(ele,val)
+        {
+            let flag =true
+            var a=document.getElementById(`${val}`).children[1].children
+         for(let i of a)
+         {
+           if(!i.children[0].checked)
+           {
+            flag = false
+           }
+         }
+         if(flag)
+         {
+    
+       let a=ele.parentElement.parentElement.parentElement.children[0]
+           a.checked=true
+        fullStack(a)
+         }
+         else{
+            ele.parentElement.parentElement.parentElement.children[0].checked=false
+            a.checked=false
+            fullStack(a)
+         }   
+
+        }
+        function fullStack(val){
+            if(!val.checked)
+        {
+          document.getElementById('full').previousElementSibling.checked =false
+        }
+        else{
+             let ele =document.getElementById('full').children
+             let flag=true
+             for(let i of ele)
+             {
+                 if(!i.children[0].checked)
+                 {
+                    flag = false
+                 }  
+             }
+             if(flag)
+             {
+                document.getElementById('full').previousElementSibling.checked =true
+             }
+             else
+             {
+                document.getElementById('full').previousElementSibling.checked = false
+             }
+        }
+        }
+        const handleTree = (e)=>{
+
+console.log(e.checked);
+//const elements = e.nextElement.querySelectorAll("input[type='checkbox']");
+console.log(e.nextElementSibling.children)
+  console.log(document.getElementById('fronted').children[1].querySelectorAll("input[type='checkbox']"))
+// elements.forEach(element => {
+//     element.checked = e.checked; 
+// });
+
+
+
+}
+       </script>
+</body>
+</html>

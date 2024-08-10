@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>adding table</h2>
+  <input type="number" id="az" onchange="teAs(this)"/>            
+  <table class="table table-bordered" id="table_id">
+    <thead>
+      <tr>
+        <th>checkbox</th>
+        <th>value</th>
+        <th>addition</th>
+        <th>subtraction</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="1">
+        <td><input type='checkbox' onchange="check(this)" ></td>
+        <td name="value"><input type='number' ></td>
+        <td><button class="btn-default" onclick="add('1')" >+</button></td>
+        <td><button class="btn-danger" onclick="sub('1')" >-</button></td>
+      </tr>
+      <tr id="2">
+        <td><input type='checkbox' onchange="check(this)"></td>
+        <td name="value"><input type='number'></td>
+        <td><button class="btn-default" onclick="add('2')" >+</button></td>
+        <td><button class="btn-danger" onclick="sub('2')" >-</button></td>
+
+       
+      </tr>
+      <tr id="3">
+        <td><input type='checkbox' onchange="check(this)"></td>
+        <td name="value"><input type='number'></td>
+        <td><button class="btn-default" onclick="add('3')" >+</button></td>
+        <td><button class="btn-danger" onclick="sub('3')" >-</button></td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>
+<script>
+    function  teAs(xc)
+    {
+        
+        let a=document.querySelectorAll('input[type=checkbox]')
+
+       a.forEach((val)=>{
+         if(val.checked)
+         {
+            check(val)
+         }
+       })
+    }
+    function check(val)
+    {
+       if(val.checked)
+       {
+        let add=document.getElementById('az').value
+        
+       let valueElement=val.parentElement.nextElementSibling.children[0]
+       let vaue =valueElement.value
+       if(vaue)
+       {
+        let c= +vaue
+        console.log(c)
+         c+= +add
+         valueElement.value=c
+       }
+       else{
+        let c= +vaue
+        
+         c= +add
+         valueElement.value=c
+       }
+       }
+    }
+    function add(val)
+    {
+   let a=  document.getElementById(val).children[1].children[0]
+   let b= a.value
+   if(!b)
+   {
+    b=1
+    a.value=b
+   }
+   else{
+     b= +b
+     let c= b+1
+   a.value=c
+   }
+   console.log(a)
+    }
+   function sub(val)
+   {
+    let a=  document.getElementById(val).children[1].children[0]
+   let b= a.value
+   if(b>0)
+   {
+    b= +b
+     let c= b-1
+   a.value=c
+   }
+   else{
+     
+      a.value=0
+   }
+  
+   }
+</script>
+</body>
+</html>
